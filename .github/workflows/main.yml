@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Set current date as env variable
-        run: echo "Within Job Beta."
+        run: echo "Within Job Beta." && exit 1
 
   gamma:
     name: Job Gamma
