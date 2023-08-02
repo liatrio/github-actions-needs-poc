@@ -8,7 +8,7 @@ jobs:
   alpha:
     name: Job Alpha
     runs-on: ubuntu-latest
-    continue-on-error: true
+    if: contains(github.ref, 'alpha')
     steps:
       - uses: actions/checkout@v3
 
@@ -18,18 +18,17 @@ jobs:
   beta:
     name: Job Beta
     runs-on: ubuntu-latest
-    continue-on-error: true
+    if: contains(github.ref, 'beta')
     steps:
       - uses: actions/checkout@v3
 
       - name: Set current date as env variable
-        run: echo "Within Job Beta." && exit 1
+        run: echo "Within Job Beta."
 
   gamma:
     name: Job Gamma
     runs-on: ubuntu-latest
-    needs: [alpha, beta]
-    if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
+    if: contains(github.ref, 'gamma')
     steps:
       - uses: actions/checkout@v3
 
