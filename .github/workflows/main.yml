@@ -27,8 +27,7 @@ jobs:
 
   gamma:
     name: Job Gamma
-    runs-on: ubuntu-latest
-    if: contains(github.ref, 'gamma')
+    runs-on: ubuntu-latest${{ always() && contains(join(needs.*.result, ','), 'success') }}
     steps:
       - uses: actions/checkout@v3
 
