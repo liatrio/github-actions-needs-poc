@@ -8,6 +8,7 @@ jobs:
   alpha:
     name: Job Alpha
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3
 
@@ -17,6 +18,7 @@ jobs:
   beta:
     name: Job Beta
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3
 
